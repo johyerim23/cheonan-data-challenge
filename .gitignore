@@ -1,0 +1,22 @@
+# 환경변수 / API 키
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# 응답 예시로 저장한 JSON
+sample_*.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store

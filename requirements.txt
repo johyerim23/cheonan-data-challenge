@@ -1,0 +1,11 @@
+# API 호출 / 환경변수
+requests==2.32.3
+python-dotenv==1.0.1
+
+# 데이터 처리
+pandas==2.2.2
+numpy==1.26.4
+xmltodict==1.0.4
+
+# ---- 테스트 ----
+pytest==8.3.2
