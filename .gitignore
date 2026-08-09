@@ -20,3 +20,6 @@ sample_*.json
 
 # OS
 .DS_Store
+
+# data
+data/
