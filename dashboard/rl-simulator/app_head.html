@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>천안 응급의료 — 배치 시뮬레이터 & 검증 결과</title>
+<style>
+:root{
+  --surface-0:#f4f3f0; --surface-1:#fcfcfb; --surface-2:#efeeea;
+  --text-primary:#0b0b0b; --text-secondary:#52514e; --text-muted:#6f6e6a;
+  --line:#e2e1dc; --grid:#e7e6e2;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s8:#e34948;
+  --q1:#86b6ef; --q2:#5598e7; --q3:#2a78d6; --q4:#184f95;
+  --good:#008300; --warn:#eda100;
+  --m0:#dfe9f3; --m1:#9ec5f4; --m2:#3987e5; --m3:#184f95; --s7:#4a3aa7;
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --surface-0:#111110; --surface-1:#1a1a19; --surface-2:#232322;
+  --text-primary:#ffffff; --text-secondary:#c3c2b7; --text-muted:#95948b;
+  --line:#33332f; --grid:#2b2b29;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s8:#e66767;
+  --q1:#3987e5; --q2:#2a78d6; --q3:#256abf; --q4:#184f95;
+  --good:#008300; --warn:#c98500;
+  --m0:#2b3440; --m1:#1c5cab; --m2:#2a78d6; --m3:#86b6ef; --s7:#9085e9;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);
+  font:14px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;
+  -webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:30;background:var(--surface-1);border-bottom:1px solid var(--line);
+  padding:14px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+h1{font-size:16px;margin:0;font-weight:650;letter-spacing:-.01em}
+.sub{color:var(--text-muted);font-size:12px}
+.tabs{display:flex;gap:4px;margin-left:auto}
+.tab{padding:7px 15px;border-radius:7px;border:1px solid var(--line);background:transparent;
+  color:var(--text-secondary);cursor:pointer;font-size:13px;font-family:inherit}
+.tab[aria-selected="true"]{background:var(--s1);border-color:var(--s1);color:#fff;font-weight:600}
+.icon-btn{padding:7px 11px;border-radius:7px;border:1px solid var(--line);background:transparent;
+  color:var(--text-secondary);cursor:pointer;font-size:13px;font-family:inherit}
+main{padding:22px;max-width:1500px;margin:0 auto}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(12,1fr)}
+.card{background:var(--surface-1);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c6{grid-column:span 6}
+.c4{grid-column:span 4}.c3{grid-column:span 3}.c5{grid-column:span 5}.c7{grid-column:span 7}
+@media(max-width:1080px){.c8,.c6,.c4,.c3,.c5,.c7{grid-column:span 12}}
+h2{font-size:14px;margin:0 0 3px;font-weight:640;letter-spacing:-.005em}
+.note{color:var(--text-muted);font-size:12px;margin:0 0 12px;line-height:1.5}
+.hero{font-size:30px;font-weight:680;letter-spacing:-.02em;line-height:1.1;margin:6px 0 2px;
+  font-variant-numeric:tabular-nums}
+.hero small{font-size:14px;font-weight:500;color:var(--text-muted);letter-spacing:0}
+.klabel{font-size:11px;letter-spacing:.04em;color:var(--text-muted);font-weight:600}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:2px 0 10px;font-size:12px;color:var(--text-secondary)}
+.legend i{width:11px;height:11px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.legend svg{display:inline;width:auto}
+.ax{font-size:11px;fill:var(--text-muted)}
+.axt{font-size:11.5px;fill:var(--text-secondary)}
+.gl{stroke:var(--grid);stroke-width:1}
+.zl{stroke:var(--text-muted);stroke-width:1;opacity:.5}
+table{border-collapse:collapse;width:100%;font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:6px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--text-muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+tbody tr:hover{background:var(--surface-2)}
+.tt{position:fixed;pointer-events:none;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 6px 22px rgba(0,0,0,.16);
+  opacity:0;transition:opacity .1s;z-index:100;max-width:280px;line-height:1.5}
+.tt b{font-weight:640}
+.ctl{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+select,label.chk{font-size:12.5px;font-family:inherit;color:var(--text-secondary)}
+select{background:var(--surface-1);color:var(--text-primary);border:1px solid var(--line);
+  border-radius:7px;padding:6px 9px}
+label.chk{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600;
+  border:1px solid var(--line);color:var(--text-secondary)}
+.pill.bad{color:var(--s8);border-color:var(--s8)}
+.pill.ok{color:var(--good);border-color:var(--good)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12.5px;margin-top:8px}
+.kv dt{color:var(--text-muted)}.kv dd{margin:0;font-variant-numeric:tabular-nums}
+
+.kpirow{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 10px;padding:9px 12px;
+  background:var(--surface-2);border-radius:9px}
+.kpirow div{font-size:13px;font-variant-numeric:tabular-nums}
+.kpirow b{font-size:16px;font-weight:680;margin-left:5px}
+.kpirow b.hi{color:var(--s2)}
+.kpirow .klabel{display:block;margin-bottom:-2px}
+.maptip{position:absolute;pointer-events:none;background:var(--surface-1);border:1px solid var(--line);
+  border-radius:8px;padding:8px 11px;font-size:12px;box-shadow:0 6px 22px rgba(0,0,0,.18);
+  opacity:0;transition:opacity .1s;z-index:20;max-width:290px;line-height:1.5}
+.maplibregl-ctrl-attrib{font-size:10px}
+.hidden{display:none}
+.mbtn{padding:6px 12px;border-radius:7px;border:1px solid var(--line);background:var(--surface-1);
+  color:var(--text-secondary);cursor:pointer;font-size:12.5px;font-family:inherit}
+.mbtn:hover{border-color:var(--s1)}
+.mbtn.on{background:var(--s1);border-color:var(--s1);color:#fff;font-weight:600}
+input[type=range]{accent-color:var(--s1)}
+.foot{color:var(--text-muted);font-size:11.5px;margin-top:20px;padding-top:14px;border-top:1px solid var(--line)}
+.warnbox{border-left:3px solid var(--warn);padding:9px 13px;background:var(--surface-2);
+  border-radius:0 8px 8px 0;font-size:12.5px;color:var(--text-secondary);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="tt" id="tt"></div>
+<header>
+  <div>
+    <h1>천안 응급의료 — 배치 시뮬레이터 &amp; 검증 결과</h1>
+    <div class="sub">행정동 31곳 · 거점 16 · 응급의료기관 18 · 정책 21종 · 2026-08-16</div>
+  </div>
+  <div class="tabs">
+    <button class="tab" id="tabC" aria-selected="true" onclick="showTab('C')">지도 · 배치 시뮬레이터</button>
+    <button class="tab" id="tabA" aria-selected="false" onclick="showTab('A')">검증 대시보드</button>
+    <button class="tab" id="tabB" aria-selected="false" onclick="showTab('B')">경합 구조 탐색</button>
+    <button class="icon-btn" onclick="toggleTheme()" id="themeBtn">다크</button>
+  </div>
+</header>
+<main>
+<section id="paneC"></section>
+<section id="paneA" class="hidden"></section>
+<section id="paneB" class="hidden"></section>
+<div class="foot">
+  출처: <code>viz/case_log/</code>, <code>gnn/</code> · 시뮬레이터 재현 검증 통과(10.62 / 15.30 / 46.6%) ·
+  타깃 y = d1 − min_eta (차선배차 손실) · 이 화면의 모든 수치는 시뮬레이션 산출물이며 실측 관측이 아니다.
+</div>
+</main>
+<script>

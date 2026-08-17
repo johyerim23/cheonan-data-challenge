@@ -203,6 +203,28 @@ models/RL/cheonan_dqn_refined_50000_seed2026.zip
 
 ## 9. 대시보드
 
+### DQN RL 배치 시뮬레이터 (신규)
+
+`dashboard/rl-simulator/천안_RL_배치시뮬레이터.html`
+
+팀에서 전달받은 천안 시뮬레이터의 지도·배차·시간 애니메이션을 유지하고, GNN 가중치와 브라우저 추론을 현재 DQN 정책 결과로 교체한 단일 HTML입니다.
+
+```bash
+conda run -n cheonan-ai python dashboard/rl-simulator/export_dqn_trace.py
+conda run -n cheonan-ai python dashboard/rl-simulator/build_rl_dashboard.py
+```
+
+주요 기능:
+
+- 수신면·동면 신규 구급 거점과 서울대정병원 응급기능 승급 추천안 적용
+- seed별 3단계 DQN Q-value 순위와 선택 과정 자동 재생
+- Random / Greedy / DQN 성능 비교
+- DQN 3개 시드 재현성 및 반복 행동 검증
+- 정책 적용 전후 지역별 개선량
+- 원본 1일 환자 발생·구급차 배차·이송 애니메이션
+
+주의: RL은 배치 정책을 선택합니다. 움직이는 지도는 선택된 배치를 원본 배차 시뮬레이터로 재생한 것이며 RL 학습 궤적 자체가 아닙니다. 상세 빌드 구조는 `dashboard/rl-simulator/README.md`를 참고합니다.
+
 ### RL 정책 재생 대시보드
 
 `data/figures/rl-policy-simulation-dashboard.html`
