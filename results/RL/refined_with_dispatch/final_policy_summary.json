@@ -1,0 +1,46 @@
+{
+  "source_method": "rule_greedy",
+  "source_seed": null,
+  "source_model": null,
+  "policy_budget": 3,
+  "expected_reward": 1.7567607282598878,
+  "calculated_reward": 1.7567607282598878,
+  "dispatch_response_improvement_min": 0.0,
+  "selected_policies": [
+    {
+      "policy": "ambulance_new_base",
+      "target_id": "REG015",
+      "target_name": "수신면"
+    },
+    {
+      "policy": "ambulance_new_base",
+      "target_id": "REG011",
+      "target_name": "동면"
+    },
+    {
+      "policy": "hospital_upgrade",
+      "target_id": "JDQ4MTYyMiM2MSMkMSMkMiMkOTkkMzgxMzUxIzIxIyQxIyQxIyQwMyQyNjE4MzIjODEjJDEjJDIjJDgz",
+      "target_name": "서울대정병원"
+    }
+  ],
+  "baseline_metrics": {
+    "mean_ems_time": 5.599677419354838,
+    "mean_hospital_time": 11.594193548387098,
+    "mean_total_time": 17.193870967741937,
+    "weighted_ems_time": 6.034316313600623,
+    "weighted_hospital_time": 13.264578960621222,
+    "weighted_total_time": 19.298895274221845,
+    "max_ems_time": 11.18,
+    "max_hospital_time": 29.62
+  },
+  "final_metrics": {
+    "mean_ems_time": 4.889032258064515,
+    "mean_hospital_time": 10.848247068703982,
+    "mean_total_time": 15.737279326768496,
+    "weighted_ems_time": 4.846073087919942,
+    "weighted_hospital_time": 12.696061458042019,
+    "weighted_total_time": 17.542134545961957,
+    "max_ems_time": 10.12,
+    "max_hospital_time": 29.62
+  }
+}

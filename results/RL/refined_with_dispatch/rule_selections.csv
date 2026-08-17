@@ -1,0 +1,4 @@
+﻿step,action_index,policy,target_id,target_name,target_region_id,target_region_name,step_reward,cumulative_reward,dispatch_response_improvement_min,weighted_total_time_before,weighted_total_time_after
+1,25,ambulance_new_base,REG015,수신면,REG015,수신면,0.5961782766911448,0.5961782766911448,0.0,19.298895274221845,18.7027169975307
+2,24,ambulance_new_base,REG011,동면,REG011,동면,0.5920649489895382,1.188243225680683,0.0,18.7027169975307,18.110652048541162
+3,51,hospital_upgrade,JDQ4MTYyMiM2MSMkMSMkMiMkOTkkMzgxMzUxIzIxIyQxIyQxIyQwMyQyNjE4MzIjODEjJDEjJDIjJDgz,서울대정병원,,,0.5685175025792049,1.7567607282598878,0.0,18.110652048541162,17.542134545961957

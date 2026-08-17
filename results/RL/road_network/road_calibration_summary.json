@@ -1,0 +1,45 @@
+{
+  "node_count": 97611,
+  "link_count": 132832,
+  "strong_component_count": 10707,
+  "routing_node_count": 86843,
+  "routing_node_share": 0.8896845642396861,
+  "connector_min_per_km": 1.2,
+  "ems_slope": 0.45188018459269336,
+  "ems_intercept": 3.5478965082461436,
+  "hospital_slope": 1.1001392436012554,
+  "hospital_intercept": 3.0725268332991544,
+  "ems_raw": {
+    "mae_min": 2.4907667029398395,
+    "rmse_min": 3.0463359176797566,
+    "median_error_min": -1.5860976799017812
+  },
+  "ems_calibrated": {
+    "mae_min": 1.4438061261915198,
+    "rmse_min": 1.8271649723625267,
+    "median_error_min": -0.21089457964046776
+  },
+  "hospital_raw": {
+    "mae_min": 4.000990858000795,
+    "rmse_min": 4.658568164960473,
+    "median_error_min": -3.672222036502836
+  },
+  "hospital_calibrated": {
+    "mae_min": 1.8720998505604098,
+    "rmse_min": 2.557847811142298,
+    "median_error_min": 0.09065518593222954
+  },
+  "ems_leave_one_out": {
+    "mae_min": 1.5500720639621945,
+    "rmse_min": 1.9436155886800666
+  },
+  "hospital_leave_one_out": {
+    "mae_min": 2.039867411459843,
+    "rmse_min": 2.8178257309781203
+  },
+  "ems_reachable": 31,
+  "hospital_reachable": 31,
+  "mapped_facility_count": 124,
+  "max_snap_distance_m": 1456.1388446296858,
+  "p95_snap_distance_m": 305.6852646707357
+}

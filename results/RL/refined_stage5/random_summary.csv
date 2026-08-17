@@ -1,0 +1,2 @@
+﻿method,episodes,policy_budget,seed,action_count,reward_mean,reward_std,reward_min,reward_q25,reward_median,reward_q75,reward_max,baseline_weighted_total_time,weighted_total_time_mean,weighted_total_time_std
+random,1000,3,42,54,0.6605070121225165,0.297263854682089,0.0,0.46758334232800536,0.677620044403966,0.8513061576935623,1.589815699707021,19.298895274221845,18.638388262099333,0.29726385468208905

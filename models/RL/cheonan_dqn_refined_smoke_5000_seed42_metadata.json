@@ -1,0 +1,10 @@
+{
+  "model_path": "models\\RL\\cheonan_dqn_refined_smoke_5000_seed42.zip",
+  "data_dir": "data/processed/RL",
+  "total_timesteps": 5000,
+  "policy_budget": 3,
+  "action_count": 54,
+  "seed": 42,
+  "elapsed_seconds": 150.43713299999945,
+  "device": "cpu"
+}

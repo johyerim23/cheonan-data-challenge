@@ -1,0 +1,17 @@
+﻿station_id,station_name,region_id,region_name,match_method,centroid_distance_km
+EMS001,119구조구급센터119안전센터,REG006,원성2동,nearest_coordinate,0.661797451881711
+EMS002,독립119안전센터,REG017,목천읍,address_exact,1.7484043767840634
+EMS003,병천119안전센터,REG012,병천면,address_exact,3.622185144403043
+EMS004,북면지역대,REG013,북면,address_exact,0.8638594184358787
+EMS005,성남지역대,REG014,성남면,address_exact,1.3144149861260432
+EMS006,청당119안전센터,REG009,청룡동,nearest_coordinate,0.8093032635375523
+EMS007,풍세119안전센터,REG016,풍세면,address_exact,1.6999051964751943
+EMS008,119구조구급센터119안전센터,REG031,직산읍,address_exact,3.18834285750183
+EMS009,두정119안전센터,REG024,성정2동,nearest_coordinate,0.685816951347503
+EMS010,불당119안전센터,REG022,불당2동,nearest_coordinate,0.6916931204736736
+EMS011,서부119안전센터,REG023,성정1동,nearest_coordinate,0.31378359018342306
+EMS012,성거119안전센터,REG029,성거읍,address_exact,1.5452047307416905
+EMS013,성환119안전센터,REG030,성환읍,address_exact,0.5557088930050238
+EMS014,쌍용119안전센터,REG026,쌍용2동,nearest_coordinate,0.3732593115487455
+EMS015,입장119안전센터,REG028,입장면,address_exact,0.20479003677910626
+EMS016,직산119안전센터,REG031,직산읍,address_exact,2.765115058653974

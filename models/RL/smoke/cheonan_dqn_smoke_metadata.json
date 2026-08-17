@@ -1,0 +1,10 @@
+{
+  "model_path": "models\\RL\\smoke\\cheonan_dqn_smoke.zip",
+  "data_dir": "data/processed/RL",
+  "total_timesteps": 12,
+  "policy_budget": 3,
+  "action_count": 53,
+  "seed": 7,
+  "elapsed_seconds": 0.2295168000000558,
+  "device": "cpu"
+}

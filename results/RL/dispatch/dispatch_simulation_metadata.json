@@ -1,0 +1,13 @@
+{
+  "days": 365,
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "regional_demand_source": "data/processed/RL/region_features.csv: emergency_calls",
+  "arrival_process": "region-specific Poisson arrivals with uniform rate over the simulated horizon",
+  "busy_time_components": "dispatch_to_scene + region_to_assigned_hospital + hospital_to_station_return",
+  "on_scene_time_min": 0.0,
+  "comparison_design": "common random numbers: baseline and each increment share the same seed-specific incident events"
+}

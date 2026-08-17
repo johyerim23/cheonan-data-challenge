@@ -1,0 +1,10 @@
+{
+  "station_count": 16,
+  "existing_region_count": 15,
+  "address_exact_count": 10,
+  "nearest_coordinate_count": 6,
+  "ambulance_existing_actions": 16,
+  "ambulance_new_base_actions": 16,
+  "hospital_upgrade_actions": 22,
+  "total_actions": 54
+}

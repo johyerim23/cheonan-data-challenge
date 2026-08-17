@@ -1,0 +1,10 @@
+{
+  "model_path": "models\\RL\\cheonan_dqn_refined_50000_seed2026.zip",
+  "data_dir": "data/processed/RL",
+  "total_timesteps": 50000,
+  "policy_budget": 3,
+  "action_count": 54,
+  "seed": 2026,
+  "elapsed_seconds": 1751.7690109000005,
+  "device": "cpu"
+}

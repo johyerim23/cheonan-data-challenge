@@ -1,0 +1,2 @@
+﻿method,model_count,total_timesteps,reward_mean,reward_std,reward_min,reward_max,weighted_total_time_mean,weighted_total_time_std,mean_total_time_mean,repeated_action_model_count,unique_policy_combinations
+dqn,3,50000,1.7519108779868802,0.0055772262758744025,1.7458165295742525,1.7567607282598878,17.546984396234965,0.0055772262758744025,15.759739735919206,0,3
